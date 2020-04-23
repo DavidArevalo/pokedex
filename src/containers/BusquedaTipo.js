@@ -32,7 +32,7 @@ const BusquedaTipo =() => {
         return (
           <>
           <div>Tipo: {type.name}</div>
-          <div>Numero de pokemons: {(type.pokemon).length}</div>
+          <div>pokemons: {(type.pokemon).length}</div>
           </>
         )
       })
