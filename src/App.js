@@ -1,7 +1,8 @@
 import React from 'react';
-//import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import './App.css';
 import Home from './containers/Home';
+import store from './store';
 import MenuBusqueda from './containers/MenuBusqueda';
 import BusquedaTipo from './containers/BusquedaTipo';
 import {
@@ -13,19 +14,21 @@ import {
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/MenuBusqueda">
-          <MenuBusqueda />
-        </Route>
-        <Route path="/BusquedaTipo">
-          <BusquedaTipo />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/MenuBusqueda">
+            <MenuBusqueda />
+          </Route>
+          <Route path="/BusquedaTipo">
+            <BusquedaTipo />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
