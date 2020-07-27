@@ -1,13 +1,16 @@
 import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
+import FormSearch from '../components/FormSearch';
+import Input from '../components/Input';
 import FondoApp from "../components/FondoApp";
 import styled from "styled-components";
 import * as typesAction from '../redux/actions/typesAction'
+import TypeList from "../components/TypeList";
 
-const BusquedaTipo =() => {
-  const loading = useSelector((state) => state.pokedexReducer.loading);
-  const data = useSelector((state) => state.pokedexReducer.data);
-  const error = useSelector((state) => state.pokedexReducer.error);
+const Tipos =() => {
+  const loading = useSelector((state) => state.pokedexReducer.types.loading);
+  const data = useSelector((state) => state.pokedexReducer.types.data);
+  const error = useSelector((state) => state.pokedexReducer.types.error);
   
   const dispatch = useDispatch();
 
@@ -27,16 +30,15 @@ const BusquedaTipo =() => {
   
   return (
     <div>
-    {
-      types.map((type, i) => {
-        return (
-          <>
-          <div>Tipo: {type.name}</div>
-          <div>pokemons: {(type.pokemon).length}</div>
-          </>
-        )
-      })
-    }
+      <FormSearch
+        onSubmit={console.log("enviado")}
+        onBlur={() => null}
+        style={{ backgroundColor: 'transparent' }}
+        onFocus={() => { console.log('onFocus') }}
+      >
+        <Input type="text" name="username" />
+      </FormSearch>
+      <TypeList types={types} />
 
       {!(types.length > 0) && !loading && <h4>No hay data disponible</h4>}
       {loading && <h4>Cargando...</h4>}
@@ -46,4 +48,4 @@ const BusquedaTipo =() => {
     </div>
   );
 };
-export default BusquedaTipo;
+export default Tipos;

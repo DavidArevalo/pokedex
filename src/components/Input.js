@@ -1,17 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Input = styled.input`
   border-radius: 0.5rem;
+  background-color: transparent;
   padding: 0.5rem;
   font-size: 1rem;
-  border: 2px solid gray;
-  margin-bottom: 0.2rem;
+  border: 0px solid transparent;
   width: 100%;
-  box-sizing: border-box;
 
   &:focus {
     outline: none;
-    border: 2px solid #f74e84;
+    background-color: transparent;
+    border: 0px solid transparent;
+    opacity: 0.9;
   }
 `;
 export default Input;

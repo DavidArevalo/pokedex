@@ -8,7 +8,7 @@ const URL_BASE = "https://pokeapi.co/api/v2/type/";
 export const getTypes = ( ) => async (dispatch, getState) => {
   dispatch({type: GETTING_TYPES});
   const state = getState();
-  const page = state.pokedexReducer.nextPage;
+  const page = state.pokedexReducer.types.nextPage;
   const limit = 5;
   const offset = page * limit;
     try {
