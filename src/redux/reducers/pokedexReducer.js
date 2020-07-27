@@ -1,7 +1,14 @@
 import * as typesAction from '../actions/typesAction';
+import * as pokemonsAction from '../actions/pokemonsAction';
 import { combineReducers } from 'redux';
 
 const initialState = {
+  pokemons: {
+    loading: false,
+    data: [],
+    error: null,
+    nextPage: 0
+  },
   types: {
     loading: false,
     data: [],
@@ -9,6 +16,26 @@ const initialState = {
     nextPage: 0,
   },
 };
+
+const pokemons = (state = initialState.pokemons, action={}) => {
+  switch (action.type) {
+    case pokemonsAction.GETTING_POKEMONS:
+      const newState = { ...state, loading: true }
+      return newState;
+    case pokemonsAction.FETCH_POKEMONS_SUCCESS:
+      return {
+        ...state,
+        data: [...state.data, ...action.payload],
+        loading: false,
+        error: null,
+        nextPage: state.nextPage + 1,
+      };
+    case pokemonsAction.FETCH_POKEMONS_ERROR:
+      return { ...state, error: action.payload, loading: false };
+    default:
+      return state;
+  }
+}
 
 const types = (state = initialState.types, action={}) => {
     switch(action.type) {
@@ -30,4 +57,7 @@ const types = (state = initialState.types, action={}) => {
     }
 }
 
-export default types;
+export default combineReducers({
+  pokemons,
+  types,
+});

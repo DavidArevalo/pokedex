@@ -11,17 +11,17 @@ const routes = {
     label: "Inicio",
     path: "/",
   },
-  MenuBusqueda: {
-    label: "About",
-    path: "/about",
-  },
   pokemons: {
     label: "Pokemons",
     path: "/pokemons",
   },
-  items: {
-    label: "Items",
-    path: "/items",
+  types: {
+    label: "Tipos",
+    path: "/tipos",
+  },
+  abilities: {
+    label: "Habilidades",
+    path: "/habilidades",
   },
 };
 

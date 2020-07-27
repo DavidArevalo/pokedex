@@ -2,8 +2,8 @@ import React from "react";
 import FondoApp from "../components/FondoApp";
 import Button from "../components/Button";
 import styled from "styled-components";
-import BusquedaTipo from "./BusquedaTipo";
-import BusquedaHabilidades from "./BusquedaHabilidades";
+import Tipos from "./Tipos";
+import Habilidades from "./Habilidades";
 import BusquedaNombre from "./BusquedaNombre";
 
 import {
@@ -11,7 +11,7 @@ import {
   Switch,
   Route,
   Link,
-  useHistory,
+  NavLink,
 } from "react-router-dom";
 
 const Container = styled.div`
@@ -58,10 +58,10 @@ const MenuBusqueda = () => {
         <div>
           <Switch>
             <Route path="/busquedaTipo">
-              <BusquedaTipo />
+              <Tipos />
             </Route>
             <Route path="/busquedaHabilidades">
-              <BusquedaHabilidades />
+              <Habilidades />
             </Route>
             <Route path="/busquedaNombre">
               <BusquedaNombre />

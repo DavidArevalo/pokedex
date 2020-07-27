@@ -1,38 +1,133 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;1,100;1,300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-container {
+  font-family: "Lato", sans-serif;
+  width: 95%;
+  margin: 0 auto;
+}
+.menu-container {
+  color: #ebebd3;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1rem;
+  width: 95%;
+  position: fixed;
+  z-index: 100;
+  background-color: #ffffff;
+}
+
+.menu-container::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.logo {
+  float: left;
+}
+.logo img {
+  width: 8rem;
+  height: 2rem;
+}
+.site-nav {
+  border-radius: 1.7em;
+  top: 100%;
+  right: 3rem;
+  left: 3rem;
   text-align: center;
+  position: absolute;
+  background: #92b697c7;
+  clip-path: circle(0px at top right);
+  transition: clip-path ease-in-out 700ms;
+}
+.site-nav-open {
+  clip-path: circle(150% at top right);
+}
+.site-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-nav li {
+  border-bottom: 1px solid #868181;
+  border-radius: 2em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.site-nav a {
+  color: #000000;
+  display: block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+.site-nav a:hover,
+.site-nav a:focus {
+  color: #232524;
+  background-color: #50d890;
+  border-radius: 1.7em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.menu-toggle {
+  padding: 1em;
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+}
+.menu-open .hamburger {
+  transform: rotate(45deg);
+}
+.menu-open .hamburger::before {
+  opacity: 0;
+}
+.menu-open .hamburger::after {
+  transform: translateY(-3px) rotate(-90deg);
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  background: #ebebd3;
+  height: 3px;
+  width: 1.75em;
+  border-radius: 3px;
+  transition: all ease-in-out 500ms;
+}
+.hamburger::before {
+  transform: translateY(-6px);
+}
+.hamburger::after {
+  transform: translateY(3px);
+}
+
+@media (min-width: 700px) {
+  .menu-toggle {
+    display: none;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .site-nav {
+    height: auto;
+    position: relative;
+    background: transparent;
+    float: right;
+    left: auto;
+    clip-path: initial;
   }
-  to {
-    transform: rotate(360deg);
+  .site-nav li {
+    display: inline-block;
+    border: none;
+  }
+
+  .site-nav a {
+    padding: 0;
+    margin-left: 1em;
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus {
+    color: #50d890;
+    background: transparent;
   }
 }
